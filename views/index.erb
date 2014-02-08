@@ -1,5 +1,22 @@
-<script>
-  $(function(){
-    new Shortly();
-  });
-</script>
+<div ng-controller="FrameController">
+  <h1>Shortly</h1>
+  <div class="navigation">
+    <ul>
+      <li><a href="#" class="index">All Links</a></li>
+      <li><a href="#" class="create">Shorten</a></li>
+    </ul>
+  </div>
+
+  <div class='container' ng-controller="LinksController">
+    <label>Filter by: </label>
+    <form class="filterLinks">
+      <input type="radio" name="sortBy" value="visits" checked>Visits</input>
+      <input type="radio" name="sortBy" value="lastclicked">Time</input>
+      <input type="text" name="searchLinks" placeholder="search links"></input>
+    </form>
+    <div class="linksDisplay" ng-view></div>
+  </div>
+</div>
+
+
+
