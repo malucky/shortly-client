@@ -1,4 +1,11 @@
-<div class='link' ng-repeat="link in links">
+<label>Filter by: </label>
+<form class="filterLinks">
+  <input type="radio" name="sortBy" value="visits" checked>Visits</input>
+  <input type="radio" name="sortBy" value="lastclicked">Time</input>
+  <button class='reverseLinks' ng-click="sayHello()">Reverse</button>
+  <input type="text" name="searchLinks" placeholder="search links" ng-model="searchBox"></input>
+</form>
+<div class='link' ng-repeat="link in links | filter: searchBox | orderBy: displayOptions.orderBy : displayOptions.reverse">
   <img src="/redirect_icon.png"/>
   <div class="info">
     <div class="visits"><span class="count">{{ link.visits }}</span>Visits</div>
@@ -6,15 +13,6 @@
     <div class="original">{{ link.url }}</div>
     <div class="lastVisited">{{ link.lastClicked }}</div>
     <a href="{{ link.base_url }}/{{ link.code }}">{{ link.base_url }}/{{ link.code }}</a>
+    <div class="lastVisited">{{ getLastClicked(link.lastclicked) }}</div>
   </div>
 </div>
-
-
-
-<div class="lastVisited"><% \
-        if (lastclicked){ \
-          var date = new Date(Number(lastclicked) * 1000) \
-        } else { \
-          var date = "not visited" \
-        } %><%= date %></div>
-

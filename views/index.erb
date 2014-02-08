@@ -7,15 +7,7 @@
     </ul>
   </div>
 
-  <div class='container' ng-controller="LinksController">
-    <label>Filter by: </label>
-    <form class="filterLinks">
-      <input type="radio" name="sortBy" value="visits" checked>Visits</input>
-      <input type="radio" name="sortBy" value="lastclicked">Time</input>
-      <input type="text" name="searchLinks" placeholder="search links"></input>
-    </form>
-    <div class="linksDisplay" ng-view></div>
-  </div>
+  <div class='container linksDisplay' ng-view></div>
 </div>
 
 
